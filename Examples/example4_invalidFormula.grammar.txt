@@ -1,0 +1,44 @@
+TERMINAL SYMBOLS:
+P D \lor , \implies C \land \forall y w = \iff ) \exists \neg x z Q (
+
+NON-TERMINAL SYMBOLS:
+predicate  formula  variable  quantifier  equality  connective_unary  constant  connective_binary  term
+
+START SYMBOL:
+formula
+
+PRODUCTION RULES:
+formula -> quantifier variable formula 
+         | ( formula connective_binary formula ) 
+         | connective_unary formula 
+         | ( term equality term ) 
+         | predicate 
+
+term -> variable 
+      | constant 
+
+variable -> w 
+          | x 
+          | y 
+          | z 
+
+constant -> C 
+          | D 
+
+quantifier -> \exists 
+            | \forall 
+
+connective_unary -> \neg 
+
+connective_binary -> \land 
+                   | \lor 
+                   | \implies 
+                   | \iff 
+
+equality -> = 
+
+predicate -> P ( variable , variable ) 
+           | Q ( variable ) 
+
+FORMULA: 
+\forall C ( \exists y ( P ( x , y ) \implies \neg Q ( x ) ) \lor \exists z ( ( ( C = z ) \land Q ( z ) ) \land P ( x , z ) ) )

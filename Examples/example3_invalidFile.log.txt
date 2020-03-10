@@ -1,0 +1,4 @@
+Contents of input file .\example3_invalidFile.txt successfully read
+Found 7 "key: values" pairs in file
+Keys/set names are correct
+INVALID FILE: Duplicate symbol ('C') found in set 'predicates'

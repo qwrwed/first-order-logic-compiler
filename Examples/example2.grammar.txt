@@ -1,0 +1,43 @@
+TERMINAL SYMBOLS:
+( AND NOT cost1 price E IMPLIES A notEqual IFF 30 == Same Non_zero OR ) , Z
+
+NON-TERMINAL SYMBOLS:
+connective_binary  connective_unary  constant  formula  variable  equality  predicate  quantifier  term
+
+START SYMBOL:
+formula
+
+PRODUCTION RULES:
+formula -> quantifier variable formula 
+         | ( formula connective_binary formula ) 
+         | connective_unary formula 
+         | ( term equality term ) 
+         | predicate 
+
+term -> variable 
+      | constant 
+
+variable -> price 
+          | cost1 
+
+constant -> 30 
+          | Z 
+
+quantifier -> E 
+            | A 
+
+connective_unary -> NOT 
+
+connective_binary -> AND 
+                   | OR 
+                   | IMPLIES 
+                   | IFF 
+
+equality -> == 
+
+predicate -> Same ( variable , variable ) 
+           | Non_zero ( variable ) 
+           | notEqual ( variable , variable , variable ) 
+
+FORMULA: 
+A price E cost1 ( Same ( cost1 , price ) AND ( NOT Non_zero ( price ) IFF ( cost1 == 30 ) ) )
