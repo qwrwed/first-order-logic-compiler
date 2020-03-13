@@ -306,29 +306,29 @@ def match(symbol, pointer = 0, depth = 0):
                             pass
 
             # add the production's match length to the list
-            matchLengths.append((matchLength, subtreeGraph, symbolsMatched, len(productionFormat), symbolsMatchedList))
+            matchLengths.append((matchLength, subtreeGraph, symbolsMatched, len(productionFormat), symbolsMatchedList, formatIssues))
         longestMatch = max(matchLengths, key=operator.itemgetter(0))
         if longestMatch[2] == 0:
             issue = f"FORMULA ERROR: Expected {displaySymbol} after '{' '.join(formulaList[:currPointer+longestMatch[0]])}', got '{formulaList[currPointer+longestMatch[0]]}' instead."
-            #issue = f"FORMULA ERROR: Expected {displaySymbol} after '{formula[:currPointer+longestMatch[0]]}', got '{formula[currPointer+longestMatch[0]]}' instead."
             issues.append((currPointer+longestMatch[0], depth, issue))
             return 0, nx.DiGraph()
         if longestMatch[2] != longestMatch[3]:
+            #issues.append(longestMatch[5])
             return 0, nx.DiGraph()
+        if depth == 0:
+            if longestMatch[0] < len(formulaList):
+                exitLog(f"FORMULA ERROR: Trailing character(s) '{' '.join(formulaList[longestMatch[0]:])}' after valid formula")
         return longestMatch[0:2]
     
 matchLength, G = match('formula')
 
 if matchLength == len(formulaList):
     writeLog("Input file and formula are VALID")
-elif matchLength > len(formulaList):
+elif matchLength < len(formulaList):
     maxPointer = max(issues, key=operator.itemgetter(0))[0]
     minDepth = min([i for i in issues if i[0] == maxPointer], key=operator.itemgetter(1))[1]
     possibleIssues = [i for i in sorted(issues, key=operator.itemgetter(0,1)) if i[0] == maxPointer and i[1] == minDepth]
     exitLog(possibleIssues[0][2])
-    #exitLog(f"FORMULA ERROR: Matched unfinished partial formula '{formula[0:matchLength]}' but failed to match remaining '{formula[matchLength:]}'")
-elif matchLength < len(formulaList):
-    exitLog(f"FORMULA ERROR: Extra symbol(s) after valid formula could not be matched: '{' '.join(formulaList[matchLength:])}'")
 
 labels = nx.get_node_attributes(G, 'label')
 

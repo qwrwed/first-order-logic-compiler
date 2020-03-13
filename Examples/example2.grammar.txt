@@ -1,8 +1,8 @@
 TERMINAL SYMBOLS:
-( AND NOT cost1 price E IMPLIES A notEqual IFF 30 == Same Non_zero OR ) , Z
+IMPLIES 30 notEqual A Non_zero IFF , Same ) OR NOT E price AND Z == ( cost1
 
 NON-TERMINAL SYMBOLS:
-connective_binary  connective_unary  constant  formula  variable  equality  predicate  quantifier  term
+equality  variable  quantifier  connective_binary  constant  predicate  term  connective_unary  formula
 
 START SYMBOL:
 formula

@@ -1,8 +1,8 @@
 TERMINAL SYMBOLS:
-P D \lor , \implies C \land \forall y w = \iff ) \exists \neg x z Q (
+Q C \forall \exists P \neg \land ) \iff , x = ( w D \implies z \lor y
 
 NON-TERMINAL SYMBOLS:
-predicate  formula  variable  quantifier  equality  connective_unary  constant  connective_binary  term
+formula  term  connective_binary  predicate  variable  constant  equality  quantifier  connective_unary
 
 START SYMBOL:
 formula

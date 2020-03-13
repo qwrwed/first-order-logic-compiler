@@ -1,7 +1,7 @@
-Contents of input file .\example4_invalidFormula.txt successfully read
+Contents of input file Examples/example4_invalidFormula.txt successfully read
 Found 7 "key: values" pairs in file
 Keys/set names are correct
 Successfully created symbol lists for terminals and for each input set
 Created production rules
-Grammar saved to .\example4_invalidFormula.grammar.txt
+Grammar saved to Examples/example4_invalidFormula.grammar.txt
 FORMULA ERROR: Expected production of type 'variable' after '\forall', got 'C' instead.

@@ -1,8 +1,8 @@
-Contents of input file example2.txt successfully read
+Contents of input file Examples/example2.txt successfully read
 Found 7 "key: values" pairs in file
 Keys/set names are correct
 Successfully created symbol lists for terminals and for each input set
 Created production rules
-Grammar saved to example2.grammar.txt
+Grammar saved to Examples/example2.grammar.txt
 Input file and formula are VALID
-Parse tree saved to example2.png
+Parse tree saved to Examples/example2.png
