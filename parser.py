@@ -321,12 +321,14 @@ matchLength, G = match('formula')
 
 if matchLength == len(formulaList):
     writeLog("Input file and formula are VALID")
-else:
+elif matchLength > len(formulaList):
     maxPointer = max(issues, key=operator.itemgetter(0))[0]
     minDepth = min([i for i in issues if i[0] == maxPointer], key=operator.itemgetter(1))[1]
     possibleIssues = [i for i in sorted(issues, key=operator.itemgetter(0,1)) if i[0] == maxPointer and i[1] == minDepth]
     exitLog(possibleIssues[0][2])
     #exitLog(f"FORMULA ERROR: Matched unfinished partial formula '{formula[0:matchLength]}' but failed to match remaining '{formula[matchLength:]}'")
+elif matchLength < len(formulaList):
+    exitLog(f"FORMULA ERROR: Extra symbol(s) after valid formula could not be matched: '{' '.join(formulaList[matchLength:])}'")
 
 labels = nx.get_node_attributes(G, 'label')
 
